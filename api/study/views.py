@@ -49,20 +49,23 @@ class ScoresView(ModelViewSet):
         math = self.request.query_params.get("math")
         english = self.request.query_params.get("english")
         science = self.request.query_params.get("science")
+        order = self.request.query_params.get("order")
         if name:
-            qs = qs.filter(name=name).order_by("-name")
-        elif math:
-            qs = qs.filter(math__gt=math).order_by("-math")
-        elif english:
-            qs = qs.filter(english__gt=english).order_by("-english")
-        elif science:
-            qs = qs.filter(science__gt=science).order_by("-science")
+            qs = qs.filter(name=name)
+        if math:
+            qs = qs.filter(math__gte=math)
+        if english:
+            qs = qs.filter(english__gte=english)
+        if science:
+            qs = qs.filter(science__gte=science)
+        if order:
+            qs = qs.order_by(order)
         return qs
 
     @action(detail=False, methods=["GET"])
     def top(self, request):
         qs = self.get_queryset().filter(
-            math__gt=80, english__gt=80, science__gt=80
+            math__gte=80, english__gte=80, science__gte=80
         )  # 각각의 점수 모두 80점 이상
         serializer = self.get_serializer(qs, many=True)
         return Response(serializer.data)
