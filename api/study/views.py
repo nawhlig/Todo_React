@@ -2,9 +2,9 @@ from django.shortcuts import render, get_object_or_404
 from .models import Students, Scores
 from .serializers import StudentsSerializer, ScoresSerializer
 from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, action
 from rest_framework.views import APIView
-from rest_framework.viewsets import ModelViewSet
+from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
 from rest_framework.response import Response
 
 
@@ -17,10 +17,55 @@ class StudentView(ModelViewSet):
     queryset = Students.objects.all()
     serializer_class = StudentsSerializer
 
+    def get_queryset(self):
+        qs = super().get_queryset()
+        name = self.request.query_params.get("name")
+        if name:
+            qs = qs.filter(name=name)
+        return qs
+
+    @action(detail=False, methods=["GET"])
+    def incheon(self, request):
+        qs = self.get_queryset().filter(address__contains="인천")  # like '%인천%'
+        serializer = self.get_serializer(qs, many=True)
+        return Response(serializer.data)
+
+    @action(detail=True, methods=["PUT"])
+    def init(self, request, pk):
+        instance = self.get_object()
+        instance.address = ""
+        instance.save(update_fields=["address", "email"])
+        serializer = self.get_serializer(instance)
+        return Response(serializer.data)
+
 
 class ScoresView(ModelViewSet):
     queryset = Scores.objects.all()
     serializer_class = ScoresSerializer
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        name = self.request.query_params.get("name")
+        math = self.request.query_params.get("math")
+        english = self.request.query_params.get("english")
+        science = self.request.query_params.get("science")
+        if name:
+            qs = qs.filter(name=name).order_by("-name")
+        elif math:
+            qs = qs.filter(math__gt=math).order_by("-math")
+        elif english:
+            qs = qs.filter(english__gt=english).order_by("-english")
+        elif science:
+            qs = qs.filter(science__gt=science).order_by("-science")
+        return qs
+
+    @action(detail=False, methods=["GET"])
+    def top(self, request):
+        qs = self.get_queryset().filter(
+            math__gt=80, english__gt=80, science__gt=80
+        )  # 각각의 점수 모두 80점 이상
+        serializer = self.get_serializer(qs, many=True)
+        return Response(serializer.data)
 
 
 ###################################################################################################################
