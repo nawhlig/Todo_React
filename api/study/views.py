@@ -4,88 +4,102 @@ from .serializers import StudentsSerializer, ScoresSerializer
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
+from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
 
 
 # Create your views here.
 
 ###################################################################################################################
+#  View -set : 클래스 유형                                                                                         #
+###################################################################################################################
+class StudentView(ModelViewSet):
+    queryset = Students.objects.all()
+    serializer_class = StudentsSerializer
+
+
+class ScoresView(ModelViewSet):
+    queryset = Scores.objects.all()
+    serializer_class = ScoresSerializer
+
+
+###################################################################################################################
 #  CBV방식 : 클래스로 뷰를 만드는 방법                                                                                #
 ###################################################################################################################
-class StudentView(APIView):
-    def get(self, request):
-        qs = Students.objects.all()
-        serializer = StudentsSerializer(qs, many=True)
-        return Response(serializer.data)
+# class StudentView(APIView):
+#     def get(self, request):
+#         qs = Students.objects.all()
+#         serializer = StudentsSerializer(qs, many=True)
+#         return Response(serializer.data)
 
-    def post(self, request):
-        serializer = StudentsSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-class StudentDetailView(APIView):
-    def get_object(self, id):
-        return get_object_or_404(Students, pk=id)
-
-    def get(self, request, id):
-        qs = self.get_object(id)
-        serializer = StudentsSerializer(qs)
-        return Response(serializer.data)
-
-    def put(self, request, id):
-        qs = self.get_object(id)
-        print(request.data)
-        serializer = StudentsSerializer(qs, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def delete(self, request, id):
-        qs = self.get_object(id)
-        qs.delete()
-        return Response(status=204)
+#     def post(self, request):
+#         serializer = StudentsSerializer(data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data, status=status.HTTP_201_CREATED)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class ScoresView(APIView):
-    def get(self, request):
-        qs = Scores.objects.all()  # 메모리 요소 , DB
-        serializer = ScoresSerializer(qs, many=True)  # 메모리 → 텍스트
-        return Response(serializer.data)
+# class StudentDetailView(APIView):
+#     def get_object(self, id):
+#         return get_object_or_404(Students, pk=id)
 
-    def post(self, request):
-        serializer = ScoresSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)  # 저장된걸 응답
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+#     def get(self, request, id):
+#         qs = self.get_object(id)
+#         serializer = StudentsSerializer(qs)
+#         return Response(serializer.data)
+
+#     def put(self, request, id):
+#         qs = self.get_object(id)
+#         print(request.data)
+#         serializer = StudentsSerializer(qs, data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+#     def delete(self, request, id):
+#         qs = self.get_object(id)
+#         qs.delete()
+#         return Response(status=204)
 
 
-class ScoresDetailView(APIView):
-    def get_object(self, id):
-        return get_object_or_404(Scores, pk=id)
+# class ScoresView(APIView):
+#     def get(self, request):
+#         qs = Scores.objects.all()  # 메모리 요소 , DB
+#         serializer = ScoresSerializer(qs, many=True)  # 메모리 → 텍스트
+#         return Response(serializer.data)
 
-    def get(self, request, id):
-        qs = self.get_object(id)
-        serializer = ScoresSerializer(qs)
-        return Response(serializer.data)
+#     def post(self, request):
+#         serializer = ScoresSerializer(data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data, status=status.HTTP_201_CREATED)  # 저장된걸 응답
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def put(self, request, id):
-        qs = self.get_object(id)
-        print(request.data)
-        serialzer = ScoresSerializer(qs, data=request.data)
-        if serialzer.is_valid():
-            serialzer.save()
-            return Response(serialzer.data)
-        return Response(serialzer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, request, id):
-        qs = self.get_object(id)
-        qs.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+# class ScoresDetailView(APIView):
+#     def get_object(self, id):
+#         return get_object_or_404(Scores, pk=id)
+
+#     def get(self, request, id):
+#         qs = self.get_object(id)
+#         serializer = ScoresSerializer(qs)
+#         return Response(serializer.data)
+
+#     def put(self, request, id):
+#         qs = self.get_object(id)
+#         print(request.data)
+#         serialzer = ScoresSerializer(qs, data=request.data)
+#         if serialzer.is_valid():
+#             serialzer.save()
+#             return Response(serialzer.data)
+#         return Response(serialzer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+#     def delete(self, request, id):
+#         qs = self.get_object(id)
+#         qs.delete()
+#         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 ###################################################################################################################
