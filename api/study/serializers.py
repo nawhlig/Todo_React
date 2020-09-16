@@ -8,8 +8,8 @@ from .models import Students, Scores
 
 class UserSerializer(ModelSerializer):
     class Meta:
-        model = get_user_model()
-        fields = "__all__"
+        model = User #get_user_model()
+        fields = ['username','email','phone_number']
 
 
 class StudentsSerializer(ModelSerializer):
@@ -43,17 +43,8 @@ class StudentsSerializer(ModelSerializer):
 
     class Meta:
         model = Students
-        fields = [
-            "name",
-            "address",
-            "email",
-            "memo",
-            "reg_user",
-            "reg_user_username",
-            "reg_user_email",
-            "reg_user",
-            "test",
-        ]
+        fields = '__all__'
+
 
 
 class ScoresSerializer(ModelSerializer):
