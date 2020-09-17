@@ -84,8 +84,8 @@ class ScoresSerializer(ModelSerializer):
 
     def validate_math(self, math):
         if not(0 < math < 100):
-        raise ValidationError("0~100 사이만 입력해주세요!")
-    return math
+            raise ValidationError("0~100 사이만 입력해주세요!")
+        return math
 
 class StudentBasicSerializer(Serializer):
     name = serializers.CharField()
