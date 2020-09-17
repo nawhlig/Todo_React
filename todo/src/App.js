@@ -1,26 +1,18 @@
 import React from 'react';
 import 'App.css';
-
-//컴포넌트 클래스, 함수형
-function Count() {
-  const [cnt, setCnt] = React.useState(0)
-
-  const click = () => {
-    setCnt(cnt +1)
-  } 
-
-
-  return(
-    <div>합계숫자는? <span>{cnt}</span>
-    <div onClick={click}>클릭!</div></div>
-    );
-}
+import Count from "Count";
+import CompoWelcome from "CompoWelcome";
+import CompoReact from "CompoReact"
+import Compo_Button1 from "Compo_Button1"
 
 
 function App() {
   return (
     <div>
-     <Count></Count>
+     <Count/>
+     <CompoWelcome/>
+     <CompoReact/>
+     <Compo_Button1/>
     </div>
   );
 }
