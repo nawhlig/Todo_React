@@ -4,6 +4,19 @@ import Count from "Count"
 import CompoWelcome from "CompoWelcome"
 import CompoReact from "CompoReact"
 import Compo_Button1 from "Compo_Button1"
+import StateTest from "Change_state"
+import Parents from "sangsok_soksung_P"
+import Child from "sangsok_soksung_C"
+import Add, { Add2, Add3 } from 'Add'
+import Gugudan from 'Gugudan'
+import TodoList from 'TodoList'
+import Gugudan2 from 'Gugudan2'
+import AppApp from 'ComponentEvent'
+import HoverTest_Box from 'HoverTest'
+import TodoList2 from 'TodoList2'
+
+
+
 
 function JsxTest() {
   const [a, setA] = React.useState(false);
@@ -22,8 +35,17 @@ function JsxTest() {
   const change = () => {
     if(state==true)setState(false)
     else if (state==false)setState(true)
-
   }
+
+  // const change1 = (e) =>{
+  //   setNum1(e.target.value)
+  // }
+
+  // const change2 = (e) =>{
+  //   setNum2(e.target.value)
+  // }
+
+
   return(
     <>
       <p></p>
@@ -40,19 +62,12 @@ function JsxTest() {
       </table>
       
       <p></p>
-      {
-        (
-          () => {
-                  //함수
-                  // const change = (e) => {
+      {(() => {  //화면에 보여주기 위한 함수들을 넣자
                   if(state==true)
                     {return <div>참 입니다</div>}
                   else if (state==false)
                     {return <div>거짓 입니다.</div>}
-                  // }
-                }
-        )()
-      }     
+                })()}     
       <div><button onClick={change}>눌러라라라라라라</button></div>
 
       <p></p>
@@ -75,7 +90,12 @@ function JsxTest() {
         })()
       }
 
-
+      <p></p>
+      {/* <div>
+        <input value={num1} onChange={(e)=>setNum1(e.target.value)}/>
+        <input value={num2} onChange={(e)=>setNum2(e.target.value)}/>
+        <input value={Number(num1) + parseInt(num2)}/>
+      </div> */}
 
     </>
   );
@@ -85,11 +105,22 @@ function JsxTest() {
 function App() {
   return (
     <div>
-     <Count/>
-     <CompoWelcome/>
-     <CompoReact/>
-     <Compo_Button1/>
-     <JsxTest/>
+     {/* <Count/> */}
+     {/* <CompoWelcome/> */}
+     {/* <CompoReact/> */}
+     {/* <Compo_Button1/>  */}
+     {/* <JsxTest/> */}
+     {/* <StateTest/> */}
+     {/* <Parents/> */}
+     {/* <Gugudan x={3}/> */}
+     {/* <Add x={10} y={20}/> */}
+     {/* <Add2 x={10} y={20}/> */}
+     {/* <Add3 x= y={20}/> */}
+     {/* <TodoList/> */}
+     {/* <Gugudan2/> */}
+     {/* <AppApp/> */}
+     {/* <HoverTest_Box/> */}
+     <TodoList2/>
     </div>
   );
 }
