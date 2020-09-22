@@ -3,4 +3,6 @@ djangorestframework
 djangorestframework-jwt
 Pillow
 pylint
+django-cors-headers
+
 
