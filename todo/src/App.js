@@ -1,5 +1,7 @@
+/* eslint-disable */
 import React from 'react'
 import 'App.css'
+// import SRPGame from "SRPGame"
 import Count from "Count"
 import CompoWelcome from "CompoWelcome"
 import CompoReact from "CompoReact"
@@ -18,6 +20,15 @@ import CountArray from "UseEffect_CountArray"
 import Useeffect_Clock from "Useeffect_Clock"
 import Useeffect_Master from "Useeffect_Master"
 import Useeffect_Clock2 from "Useeffect_Clock2"
+import TestReducer from "TestReducer"
+import TestReducer2 from "TestReducer2"
+import TempReducer from "TempReducer"
+import CssTest1 from 'CssTest1';
+import CssTest2 from 'CssTest2';
+import SRPGame_example from 'SRPGame_example';
+
+
+
 
 
 
@@ -108,6 +119,7 @@ function JsxTest() {
 function App() {
   return (
     <div>
+     {/* <SRPGame/> */}
      {/* <Count/> */}
      {/* <CompoWelcome/> */}
      {/* <CompoReact/> */}
@@ -126,7 +138,13 @@ function App() {
      {/* <TodoList2/> */}
      {/* <CountArray/> */}
      {/* <Useeffect_Clock/> */}
-     <Useeffect_Clock2/>
+     {/* <Useeffect_Clock2/> */}
+     {/* <TestReducer/> */}
+     {/* <TestReducer2/> */}
+     {/* <TempReducer/> */}
+     {/* <CssTest1/> */}
+     {/* <CssTest2/> */}
+     {/* <SRPGame_example/> */}
      
     </div>
   );
