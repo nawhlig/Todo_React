@@ -1,33 +1,35 @@
 /* eslint-disable */
-import React from 'react'
-import 'App.css'
-// import SRPGame from "SRPGame"
-import Count from "Count"
-import CompoWelcome from "CompoWelcome"
-import CompoReact from "CompoReact"
-import Compo_Button1 from "Compo_Button1"
-import StateTest from "Change_state"
-import Parents from "sangsok_soksung_P"
-import Child from "sangsok_soksung_C"
-import Add, { Add2, Add3 } from 'Add'
-import Gugudan from 'Gugudan'
-import TodoList from 'TodoList'
-import Gugudan2 from 'Gugudan2'
-import AppApp from 'ComponentEvent'
-import HoverTest_Box from 'HoverTest'
-import TodoList2 from 'TodoList2'
-import CountArray from "UseEffect_CountArray"
-import Useeffect_Clock from "Useeffect_Clock"
-import Useeffect_Master from "Useeffect_Master"
-import Useeffect_Clock2 from "Useeffect_Clock2"
-import TestReducer from "TestReducer"
-import TestReducer2 from "TestReducer2"
-import TempReducer from "TempReducer"
+import React from 'react';
+import 'App.css';
+// import SRPGame from "SRPGame";
+import Count from "Count";
+import CompoWelcome from "CompoWelcome";
+import CompoReact from "CompoReact";
+import Compo_Button1 from "Compo_Button1";
+import StateTest from "Change_state";
+import Parents from "sangsok_soksung_P";
+import Child from "sangsok_soksung_C";
+import Add, { Add2, Add3 } from 'FunctionSum';
+import Gugudan from 'Gugudan';
+import TodoList from 'TodoList';
+import Gugudan2 from 'Gugudan2';
+import AppApp from 'ComponentEvent';
+import HoverTest_Box from 'HoverTest';
+import TodoList2 from 'TodoList2';
+import CountArray from "UseEffect_CountArray";
+import Useeffect_Clock from "Useeffect_Clock";
+import Useeffect_Master from "Useeffect_Master";
+import Useeffect_Clock2 from "Useeffect_Clock2";
+import TestReducer from "ReducerExample1";
+import TestReducer2 from "ReducerExample2";
+import TempReducer from "ReducerTemp";
 import CssTest1 from 'CssTest1';
 import CssTest2 from 'CssTest2';
 import SRPGame_example from 'SRPGame_example';
-
-
+import ContextApiTest from "ContextApiExample";
+import CompocContextApi  from "ContextApiTemp"
+import AxiosTest from "AxiosTest_api_students"
+import AxiosTest2 from "AxiosTest_api_scores"
 
 
 
@@ -145,7 +147,11 @@ function App() {
      {/* <CssTest1/> */}
      {/* <CssTest2/> */}
      {/* <SRPGame_example/> */}
-     
+     {/* <ContextApiTest/> */}
+     {/* <CompocContextApi/> */}
+     {/* <AxiosTest/> */}
+     <AxiosTest2/>
+
     </div>
   );
 }
