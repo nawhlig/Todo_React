@@ -27,11 +27,14 @@ import CssTest1 from 'CssTest1';
 import CssTest2 from 'CssTest2';
 import SRPGame_example from 'SRPGame_example';
 import ContextApiTest from "ContextApiExample";
-import CompocContextApi  from "ContextApiTemp"
-import AxiosTest from "AxiosTest_api_students"
-import AxiosTest2 from "AxiosTest_api_scores"
-
-
+import CompocContextApi  from "ContextApiTemp";
+import AxiosTest from "AxiosTest_api_students";
+import AxiosTest2 from "AxiosTest_api_scores";
+import Ex_Router from "Ex_Router";
+import Ex_Router_test from "Ex_Router_test";
+import Example from "Test_design";
+import FullWidthTabs from "Test_design2";
+import Example3 from "Test_design3";
 
 
 function JsxTest() {
@@ -150,8 +153,12 @@ function App() {
      {/* <ContextApiTest/> */}
      {/* <CompocContextApi/> */}
      {/* <AxiosTest/> */}
-     <AxiosTest2/>
-
+     {/* <AxiosTest2/> */}
+     {/* <Ex_Router/> */}
+     {/* <Ex_Router_test/> */}
+     {/* <Example/> */}
+     <FullWidthTabs/>
+     {/* <Example3/> */}
     </div>
   );
 }
