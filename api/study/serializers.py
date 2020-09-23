@@ -57,7 +57,7 @@ class ScoresSerializer(ModelSerializer):
 
     class Meta:
         model = Scores
-        fields = ['name','math','science','english','reg_user','username','email','phone_number']
+        fields = ['id','name','math','science','english','reg_user','username','email','phone_number']
 
     # # 이런것도 가능
     # # reg_date 데이터가 있다면
