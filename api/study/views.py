@@ -23,7 +23,7 @@ from rest_framework.permissions import IsAuthenticated
 class StudentView(ModelViewSet):
     queryset = Students.objects.all()
     serializer_class = StudentsSerializer
-    #permission_classes=[IsAuthenticated]
+    permission_classes=[IsAuthenticated]
 
     # def get_queryset(self):
     #     qs = super().get_queryset()

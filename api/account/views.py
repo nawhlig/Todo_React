@@ -10,11 +10,11 @@ from .models import User
 @api_view(["GET", "POST"])
 def signup(request):
     if request.method == 'GET':
-        users = SignupSerializers(User.objects.all(), many=True)
+        users = SingupSerializer(User.objects.all(), many=True)
         return Response(users.data)
 
     elif request.method == 'POST':
-        signup = SignupSerializers(data=request.data)
+        signup = SingupSerializer(data=request.data)
         if signup.is_valid():
             signup.save()
             return Response(signup.data, status=201) 

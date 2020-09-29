@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # installed
     "rest_framework",
-    "corsheaders",
     # app
     "account",
     "study",
@@ -50,7 +49,6 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -88,6 +86,7 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+
 
 AUTH_USER_MODEL = "account.USER"
 
@@ -143,5 +142,3 @@ JWT_AUTH={
     # "JWT_REFRESH_EXPIRATION_DELTA":datetime.timedelta(days=30),
     # "JWT_SECRET_KEY":"KEY"
 }
-
-CORS_ORIGIN_ALLOW_ALL = True
