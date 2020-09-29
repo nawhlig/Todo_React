@@ -8,10 +8,10 @@ router.register("scores", views.ScoresView)
 
 urlpatterns = [
     path("", include(router.urls)),
-    # path("basicserializer/students", views.StudentBasicView),
-    # path("basicserializer/students/<pk>", views.StudentBasicDetailView),
-    # path("basicserializer/scores", views.ScoresBasicView),
-    # path("basicserializer/scores/<pk>", views.ScoresBasicDetailView),
+    path("basicserializer/students", views.StudentBasicView),
+    path("basicserializer/students/<pk>", views.StudentBasicDetailView),
+    path("basicserializer/scores", views.ScoresBasicView),
+    path("basicserializer/scores/<pk>", views.ScoresBasicDetailView),
     # testscore
     #
     # path("students/", views.StudentView),

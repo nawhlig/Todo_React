@@ -12,7 +12,6 @@ from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view, action
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated
 
 
 # Create your views here.
@@ -23,7 +22,6 @@ from rest_framework.permissions import IsAuthenticated
 class StudentView(ModelViewSet):
     queryset = Students.objects.all()
     serializer_class = StudentsSerializer
-    permission_classes=[IsAuthenticated]
 
     # def get_queryset(self):
     #     qs = super().get_queryset()
@@ -249,60 +247,60 @@ class ScoresView(ModelViewSet):
 ###################################################################################################################
 #  FBV방식 : 뷰의 기본형식으로 작성법                                                                                             #
 ###################################################################################################################
-# @api_view(["GET", "POST"])
-# def StudentBasicView(request):
-#     if request.method == "GET":
-#         student = Students.objects.all()
-#         serializer = StudentBasicSerializer(student, many=True)
-#         return Response(serializer.data)
-#     elif request.method == "POST":
-#         serializer = StudentBasicSerializer(data=request.data)
-#         if serializer.is_valid():
-#             serializer.save()  # serializer.save()가 동작하면 serializers.py 의 def create(self, validated_date): 가 실행됨
-#             return Response(serializer.data, status=201)
-#         return Response(serializer.errors, status=400)
+@api_view(["GET", "POST"])
+def StudentBasicView(request):
+    if request.method == "GET":
+        student = Students.objects.all()
+        serializer = StudentBasicSerializer(student, many=True)
+        return Response(serializer.data)
+    elif request.method == "POST":
+        serializer = StudentBasicSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()  # serializer.save()가 동작하면 serializers.py 의 def create(self, validated_date): 가 실행됨
+            return Response(serializer.data, status=201)
+        return Response(serializer.errors, status=400)
 
 
-# @api_view(["PUT"])
-# def StudentBasicDetailView(request, pk):
-#     if request.method == "PUT":
-#         student = Students.objects.get(pk=pk)
-#         serializer = StudentBasicSerializer(student, data=request.data)
-#         # student 원래데이터
-#         # request.data 사람이 보내준 데이터
-#         if serializer.is_valid():
-#             serializer.save()
-#             # (원래데이터 <- 사람이 보내준 데이터) -> SAVE
-#             return Response(serializer.data)
-#         return Response(serializer.errors, status=400)
+@api_view(["PUT"])
+def StudentBasicDetailView(request, pk):
+    if request.method == "PUT":
+        student = Students.objects.get(pk=pk)
+        serializer = StudentBasicSerializer(student, data=request.data)
+        # student 원래데이터
+        # request.data 사람이 보내준 데이터
+        if serializer.is_valid():
+            serializer.save()
+            # (원래데이터 <- 사람이 보내준 데이터) -> SAVE
+            return Response(serializer.data)
+        return Response(serializer.errors, status=400)
 
 
-# @api_view(["GET", "POST"])
-# def ScoresBasicView(request):
-#     if request.method == "GET":
-#         scores = Scores.objects.all()
-#         serializer = ScoresBasicSerializer(scores, many=True)
-#         return Response(serializer.data)
-#     elif request.method == "POST":
-#         serializer = ScoresBasicSerializer(data=request.data)
-#         if serializer.is_valid():
-#             # 가공
-#             serializer.save(
-#                 memo="이건 테스트 입니다."
-#             )  # serializer.save()가 동작하면 serializers.py 의 def create(self, validated_date): 가 실행됨
-#             return Response(serializer.data, status=201)
-#         return Response(serializer.errors, status=400)
+@api_view(["GET", "POST"])
+def ScoresBasicView(request):
+    if request.method == "GET":
+        scores = Scores.objects.all()
+        serializer = ScoresBasicSerializer(scores, many=True)
+        return Response(serializer.data)
+    elif request.method == "POST":
+        serializer = ScoresBasicSerializer(data=request.data)
+        if serializer.is_valid():
+            # 가공
+            serializer.save(
+                memo="이건 테스트 입니다."
+            )  # serializer.save()가 동작하면 serializers.py 의 def create(self, validated_date): 가 실행됨
+            return Response(serializer.data, status=201)
+        return Response(serializer.errors, status=400)
 
 
-# @api_view(["PUT"])
-# def ScoresBasicDetailView(request, pk):
-#     if request.method == "PUT":
-#         scores = Scores.objects.get(pk=pk)
-#         # scores 원래데이터
-#         # request.data 사람이 보내준 데이터
-#         # (원래데이터 <- 사람이 보내준 데이터) -> SAVE
-#         serializer = ScoresBasicSerializer(scores, data=request.data)
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response(serializer.data)
-#         return Response(serializer.errors, status=400)
+@api_view(["PUT"])
+def ScoresBasicDetailView(request, pk):
+    if request.method == "PUT":
+        scores = Scores.objects.get(pk=pk)
+        # scores 원래데이터
+        # request.data 사람이 보내준 데이터
+        # (원래데이터 <- 사람이 보내준 데이터) -> SAVE
+        serializer = ScoresBasicSerializer(scores, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=400)
