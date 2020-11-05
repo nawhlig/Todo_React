@@ -12,3 +12,5 @@ class StudentsAdmin(admin.ModelAdmin):
 @admin.register(Scores)
 class ScoresAdmin(admin.ModelAdmin):
     list_display = ["name"]
+
+    
